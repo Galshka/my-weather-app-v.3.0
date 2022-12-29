@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <link href="src/styles.css" rel="stylesheet" type="text/css" />
+    <title>Weather App</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="main">
+        <div class="row search-box">
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control rounded"
+              placeholder="Enter a city..."
+              aria-label="Search"
+              aria-describedby="search-addon"
+              id="search-form"
+            />
+            <div class="d-grid gap-2 d-md-block">
+              <button class="btn btn-info" type="button" id="search-button">
+                Search
+              </button>
+              <button
+                class="btn btn-primary green"
+                type="button"
+                id="current-button"
+              >
+                Current
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="row today-weather">
+          <div class="col-sm-12 col-md-12">
+            <h1>Odessa</h1>
+            <h2>Friday, 22:44</h2>
+          </div>
+          <div class="row align-items-center">
+            <div class="col-sm-12 col-md-4">
+              <span class="today-weather-temp">15</span>
+              <span class="sup-dark">
+                <a href="">°C</a>
+              </span>
+              <span class="sup-black">|</span>
+              <span class="sup-lite">
+                <a href="">°F</a>
+              </span>
+            </div>
+            <div class="col-sm-12 col-md-3" id="today-weather-icon">
+              <img src="icons/11d-100.png" alt="Clear" />
+              <div class="weather-decription">Clear</div>
+            </div>
+            <div class="col-sm-12 col-md-5 weather-properties">
+              <ul>
+                <li><strong>Humidity:</strong> 85 %</li>
+                <li><strong>Wind:</strong> 5 m/s</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div class="row forecast">
+          <div class="col">
+            <div class="forecast-days" id="day1">Sat</div>
+            <span class="forecast-temp">15</span>
+            <span class="sup">°C</span>
+            <br />
+            <img src="icons/01n-25.png" />
+          </div>
+          <div class="col">
+            <div class="forecast-days" id="day2">Sun</div>
+            <span class="forecast-temp">5</span>
+            <span class="sup">°C</span>
+            <br />
+            <img src="icons/03n-25.png" />
+          </div>
+          <div class="col">
+            <div class="forecast-days" id="day3">Mon</div>
+            <span class="forecast-temp">11</span>
+            <span class="sup">°C</span>
+            <br />
+            <img src="icons/04n-25.png" />
+          </div>
+          <div class="col">
+            <div class="forecast-days" id="day4">Tue</div>
+            <span class="forecast-temp">8</span>
+            <span class="sup">°C</span>
+            <br />
+            <img src="icons/50n-25.png" />
+          </div>
+          <div class="col">
+            <div class="forecast-days" id="day5">Wed</div>
+            <span class="forecast-temp">8</span>
+            <span class="sup">°C</span>
+            <br />
+            <img src="icons/01d-25.png" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="src/app.js"></script>
+  </body>
+</html>
