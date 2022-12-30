@@ -14,6 +14,8 @@ let h1 = document.querySelector("h1");
 let h2 = document.querySelector("h2");
 let todayTemp = document.querySelector(".today-temp");
 let todayWeatherIcon = document.querySelector("#today-weather-icon");
+let todayHumidity = document.querySelector("#humidity");
+let todayWind = document.querySelector("#wind");
 let forecastDay = document.querySelectorAll(".forecast-days");
 let forecastTemp = document.querySelectorAll(".forecast-temp");
 
@@ -43,8 +45,10 @@ function getCurrentDate() {
 // }
 
 function showWeather(response) {
+  console.log(response);
   let temperature = Math.round(response.data.main.temp);
   let humidity = response.data.main.humidity;
+  console.log(humidity);
   let wind = response.data.wind.speed;
   let weatherDescription = response.data.weather[0].main;
   let weatherIcon = response.data.weather[0].icon;
@@ -54,14 +58,13 @@ function showWeather(response) {
   h1.innerHTML = city;
   h2.innerHTML = `${date.dayWeek}, ${date.time}`;
   todayTemp.innerHTML = temperature;
-  todayWeatherIcon.innerHTML = `
-   <img src="icons/${weatherIcon}-100.png" alt="${weatherDescription}" />
-   <div class="weather-decription">${weatherDescription}</div>
-  `;
+  todayWeatherIcon.innerHTML = `<img src="icons/${weatherIcon}-100.png" alt="${weatherDescription}" />`;
+  todayHumidity.innerHTML = ` ${humidity} %`;
+  todayWind.innerHTML = ` ${wind} m/s`;
 }
 
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityStart}&units=metric&appid=${apiKey}`;
 axios.get(apiUrl).then(showWeather);
 
 let searchButton = document.querySelector("#search-button");
-searchButton.addEventListener("click", changeData);
+// searchButton.addEventListener("click", changeData);

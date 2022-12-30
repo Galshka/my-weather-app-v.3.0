@@ -50,10 +50,6 @@ hr {
 .today-weather-icon img {
   margin-bottom: -30px;
 }
-.weather-decription {
-  margin-top: -25px;
-  text-align: center;
-}
 
 .today-temp {
   font-size: 50px;
@@ -98,16 +94,6 @@ hr {
 .green:hover {
   background-color: #6b8e23;
   border-color: #6b8e23;
-}
-
-.forecast-days {
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.forecast-numbers {
-  font-size: 35px;
-  line-height: 10px;
 }
 
 .sup {
