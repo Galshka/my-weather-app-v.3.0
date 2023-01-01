@@ -127,3 +127,8 @@ hr {
 .sup-black {
   color: #0c0e0e;
 }
+
+.smaller {
+  font-size: smaller;
+  text-align: center;
+}
