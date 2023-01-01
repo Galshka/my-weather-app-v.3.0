@@ -8,7 +8,7 @@ let days = [
   "Saturday",
 ];
 
-let apiKey = "6e6ec494746b5229a9f2d526478c924c";
+let apiKey = "05bfb21a258cdae24d749dd944debfc2";
 let cityStart = "Odesa";
 let h1 = document.querySelector("h1");
 let h2 = document.querySelector("h2");
@@ -48,9 +48,10 @@ function showWeather(response) {
   console.log(response);
   let temperature = Math.round(response.data.main.temp);
   let humidity = response.data.main.humidity;
-  console.log(humidity);
+
   let wind = response.data.wind.speed;
-  let weatherDescription = response.data.weather[0].main;
+  let weatherDescription = response.data.weather[0].description;
+  console.log(weatherDescription);
   let weatherIcon = response.data.weather[0].icon;
   let city = response.data.name;
   let date = getCurrentDate();
@@ -58,10 +59,13 @@ function showWeather(response) {
   h1.innerHTML = city;
   h2.innerHTML = `${date.dayWeek}, ${date.time}`;
   todayTemp.innerHTML = temperature;
-  todayWeatherIcon.innerHTML = `<img src="icons/${weatherIcon}-100.png" alt="${weatherDescription}" />`;
-  todayHumidity.innerHTML = ` ${humidity} %`;
-  todayWind.innerHTML = ` ${wind} m/s`;
+  todayWeatherIcon.setAttribute("src", `icons/${weatherIcon}-100.png`);
+  todayWeatherIcon.setAttribute("alt", `${weatherDescription}`);
+  todayHumidity.innerHTML = `&nbsp;&nbsp;${humidity} %`;
+  todayWind.innerHTML = `&nbsp;&nbsp${wind} m/s`;
 }
+
+function showForecast(response) {}
 
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityStart}&units=metric&appid=${apiKey}`;
 axios.get(apiUrl).then(showWeather);
