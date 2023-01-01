@@ -8,6 +8,8 @@ let days = [
   "Saturday",
 ];
 
+var tempUnits = "C";
+
 let forecastDay = document.querySelectorAll(".forecast-days");
 let forecastTemp = document.querySelectorAll(".forecast-temp");
 
@@ -30,6 +32,7 @@ function getCurrentDate() {
 
 function showWeather(response) {
   let temperature = Math.round(response.data.main.temp);
+  temperatureCelsius = response.data.main.temp;
   let humidity = response.data.main.humidity;
   let wind = response.data.wind.speed;
   wind = wind.toFixed(1);
@@ -65,12 +68,34 @@ function search(city) {
   axios.get(apiUrl).then(showWeather);
 }
 
-search("Odesa");
-
 function setCity(event) {
   event.preventDefault();
   let inputCity = document.querySelector("#search-form");
+  search(inputCity.value);
 }
 
 let searchButton = document.querySelector("#search-button");
-searchButton.addEventListener("submit", setCity);
+searchButton.addEventListener("click", setCity);
+
+function changeUnitFahrenheit(event) {
+  event.preventDefault();
+  let todayTemp = document.querySelector(".today-temp");
+  let temperature = (temperatureCelsius - 32) / 1.8;
+  todayTemp.innerHTML = Math.round(temperature);
+}
+
+function changeUnitCelsius(event) {
+  event.preventDefault();
+  let todayTemp = document.querySelector(".today-temp");
+  temperature = temperatureCelsius;
+  todayTemp.innerHTML = Math.round(temperature);
+}
+
+let temperatureCelsius = null;
+let tempUnitC = document.querySelector("#temp-unit-celsius");
+let tempUnitF = document.querySelector("#temp-unit-fahrenheit");
+
+tempUnitF.addEventListener("click", changeUnitFahrenheit);
+tempUnitC.addEventListener("click", changeUnitCelsius);
+
+search("Odesa");
