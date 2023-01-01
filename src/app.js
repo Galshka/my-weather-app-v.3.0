@@ -8,8 +8,6 @@ let days = [
   "Saturday",
 ];
 
-var tempUnits = "C";
-
 let forecastDay = document.querySelectorAll(".forecast-days");
 let forecastTemp = document.querySelectorAll(".forecast-temp");
 
@@ -79,6 +77,12 @@ searchButton.addEventListener("click", setCity);
 
 function changeUnitFahrenheit(event) {
   event.preventDefault();
+  let unitF = document.querySelector("#F-unit");
+  let unitC = document.querySelector("#C-unit");
+  unitF.classList.remove("sup-lite");
+  unitF.classList.add("sup-dark");
+  unitC.classList.remove("sup-dark");
+  unitC.classList.add("sup-lite");
   let todayTemp = document.querySelector(".today-temp");
   let temperature = (temperatureCelsius - 32) / 1.8;
   todayTemp.innerHTML = Math.round(temperature);
@@ -86,6 +90,12 @@ function changeUnitFahrenheit(event) {
 
 function changeUnitCelsius(event) {
   event.preventDefault();
+  let unitC = document.querySelector("#C-unit");
+  let unitF = document.querySelector("#F-unit");
+  unitC.classList.remove("sup-lite");
+  unitC.classList.add("sup-dark");
+  unitF.classList.remove("sup-dark");
+  unitF.classList.add("sup-lite");
   let todayTemp = document.querySelector(".today-temp");
   temperature = temperatureCelsius;
   todayTemp.innerHTML = Math.round(temperature);
