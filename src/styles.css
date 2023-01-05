@@ -24,7 +24,7 @@ hr {
   display: block;
   margin: 20px auto;
   padding: 15px;
-  width: 45%;
+  width: 500px;
   background-color: rgba(0, 139, 139, 0.1);
   border-color: #008b8b;
   border-radius: 15px;
@@ -52,28 +52,36 @@ hr {
 }
 
 .today-temp {
-  font-size: 50px;
+  font-size: 55px;
   font-weight: bold;
   line-height: 35px;
 }
-
-.forecast {
-  margin-left: 20px;
-}
+/* 
+.forecast-day {
+  text-align: center;
+} */
 .forecast-days {
   font-size: 18px;
   font-weight: bold;
 }
 
-.forecast-temp {
-  font-size: 35px;
+.forecast-temp-max {
+  font-size: 31px;
   line-height: 10px;
-  text-align: center;
+}
+
+.forecast-temp-min {
+  font-size: 28px;
+  line-height: 10px;
+  color: #b5c0c0;
+}
+
+.day-weather-icon {
+  width: 40px;
 }
 
 .forecast-block {
   margin-left: 10px;
-  text-align: center;
 }
 .input-group {
   margin-top: 10px;

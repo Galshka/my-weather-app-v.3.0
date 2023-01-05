@@ -1,4 +1,4 @@
-let days = [
+var days = [
   "Sunday",
   "Monday",
   "Tuesday",
@@ -26,6 +26,27 @@ function getCurrentDate() {
   let dayWeek = days[dayNumber];
   let time = `${hours}:${minutes}`;
   return { dayWeek, time };
+}
+
+function showForecast() {
+  let forecast = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+        <div class="col-3 text-center" id="forecast-day">
+          <div class="forecast-days">${day.substring(0, 3)}</div>
+          <span class="forecast-temp-max">15 /</span>
+          <span class="forecast-temp-min">8</span>
+          <span class="sup">°</span>
+          <br />
+          <img src="icons/01n-50.png" class="day-weather-icon" />
+        </div>
+    `;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecast.innerHTML = forecastHTML;
 }
 
 function showWeather(response) {
@@ -109,3 +130,4 @@ tempUnitF.addEventListener("click", changeUnitFahrenheit);
 tempUnitC.addEventListener("click", changeUnitCelsius);
 
 search("Odesa");
+showForecast();
