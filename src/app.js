@@ -65,7 +65,7 @@ function showWeather(response) {
   let date = getCurrentDate(dateUTC);
 
   let dailyForecastFull = response.data.daily;
-  dailyForecastFull.shift();
+  dailyForecastFull.pop();
   dailyForecastFull.pop();
   dailyForecastFull.pop();
 
@@ -162,9 +162,7 @@ tempUnitC.addEventListener("click", changeUnitCelsius);
 
 function search(city) {
   let apiURl = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${apiKey}`;
-  console.log(apiURl);
   axios.get(apiURl).then(getForecast);
 }
 
 search("Odesa");
-// getForecast("Odesa");
