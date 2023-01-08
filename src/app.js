@@ -36,9 +36,8 @@ function showForecast(forecast) {
       `
         <div class="col text-center" id="forecast-day">
           <div class="forecast-days">${day.day}</div>
-          <span class="forecast-temp-max">${day.tempMax} /</span>
-          <span class="forecast-temp-min">${day.tempMin}</span>
-          <span class="sup">°</span>
+          <span class="forecast-temp-max">${day.tempMax}° /</span>
+          <span class="forecast-temp-min">${day.tempMin}°</span>
           <br />
           <img src="icons/${day.icon}-50.png" 
           class="day-weather-icon" 
@@ -70,21 +69,38 @@ function showWeather(response) {
   dailyForecastFull.pop();
 
   let dailyForecast = [];
+  temp2Units = [];
+
   dailyForecastFull.forEach(function (day) {
     let dayDate = getCurrentDate(day.dt);
     let dayName = dayDate.dayWeek.substring(0, 3);
-    let tempMax = Math.round(day.temp.max);
-    let tempMin = Math.round(day.temp.min);
     let iconDay = day.weather[0].icon;
     let iconDesc = day.weather[0].description;
+
+    let tempMaxC = Math.round(day.temp.max);
+    let tempMinC = Math.round(day.temp.min);
+    let tempMaxF = (day.temp.max - 32) / 1.8;
+    let tempMinF = (day.temp.min - 32) / 1.8;
+    tempMaxF = Math.round(tempMaxF);
+    tempMinF = Math.round(tempMinF);
+
     let dayWeatherData = {
       day: `${dayName}`,
-      tempMax: `${tempMax}`,
-      tempMin: `${tempMin}`,
+      tempMax: `${tempMaxC}`,
+      tempMin: `${tempMinC}`,
       icon: `${iconDay}`,
       description: `${iconDesc}`,
     };
+
+    let temp2UnitsOne = {
+      day: `${dayName}`,
+      tempMaxC: `${tempMaxC}`,
+      tempMinC: `${tempMinC}`,
+      tempMaxF: `${tempMaxF}`,
+      tempMinF: `${tempMinF}`,
+    };
     dailyForecast.push(dayWeatherData);
+    temp2Units.push(temp2UnitsOne);
   });
 
   let h2 = document.querySelector("h2");
@@ -120,7 +136,7 @@ function getForecast(response) {
 
 function setCity(event) {
   event.preventDefault();
-  let inputCity = document.querySelector("#search-form");
+  let inputCity = document.querySelector("#search-input");
   search(inputCity.value);
 }
 
@@ -138,6 +154,13 @@ function changeUnitFahrenheit(event) {
   let todayTemp = document.querySelector(".today-temp");
   let temperature = (temperatureCelsius - 32) / 1.8;
   todayTemp.innerHTML = Math.round(temperature);
+
+  let forecastTempMax = document.querySelectorAll(".forecast-temp-max");
+  let forecastTempMin = document.querySelectorAll(".forecast-temp-min");
+  for (let i = 0; i < forecastTempMax.length; i++) {
+    forecastTempMax[i].textContent = `${temp2Units[i].tempMaxF}° /`;
+    forecastTempMin[i].textContent = `${temp2Units[i].tempMinF}°`;
+  }
 }
 
 function changeUnitCelsius(event) {
@@ -151,9 +174,17 @@ function changeUnitCelsius(event) {
   let todayTemp = document.querySelector(".today-temp");
   temperature = temperatureCelsius;
   todayTemp.innerHTML = Math.round(temperature);
+
+  let forecastTempMax = document.querySelectorAll(".forecast-temp-max");
+  let forecastTempMin = document.querySelectorAll(".forecast-temp-min");
+  for (let i = 0; i < forecastTempMax.length; i++) {
+    forecastTempMax[i].textContent = `${temp2Units[i].tempMaxC}° /`;
+    forecastTempMin[i].textContent = `${temp2Units[i].tempMinC}°`;
+  }
 }
 
 let temperatureCelsius = null;
+
 let tempUnitC = document.querySelector("#temp-unit-celsius");
 let tempUnitF = document.querySelector("#temp-unit-fahrenheit");
 

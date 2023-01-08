@@ -56,24 +56,21 @@ hr {
   font-weight: bold;
   line-height: 35px;
 }
-/* 
-.forecast-day {
-  text-align: center;
-} */
+
 .forecast-days {
   font-size: 18px;
   font-weight: bold;
 }
 
 .forecast-temp-max {
-  font-size: 23px;
+  font-size: 17px;
   line-height: 10px;
 }
 
 .forecast-temp-min {
-  font-size: 20px;
+  font-size: 16px;
   line-height: 10px;
-  color: #b5c0c0;
+  color: #6e7575;
 }
 
 .day-weather-icon {
@@ -106,7 +103,7 @@ hr {
 
 .sup {
   vertical-align: super;
-  font-size: 20px;
+  font-size: 18px;
   color: #008080;
 }
 
