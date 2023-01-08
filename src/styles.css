@@ -66,12 +66,12 @@ hr {
 }
 
 .forecast-temp-max {
-  font-size: 31px;
+  font-size: 23px;
   line-height: 10px;
 }
 
 .forecast-temp-min {
-  font-size: 28px;
+  font-size: 20px;
   line-height: 10px;
   color: #b5c0c0;
 }
